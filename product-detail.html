@@ -1,0 +1,453 @@
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,400i,700">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <style>
+        .buy-now .home-button,
+        .buy-now .cart-button,
+        .buy-now .send-cart-button {
+            background: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease, color 0.3s ease;
+            margin-top: 10px;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+        }
+        .buy-now .home-button:hover,
+        .buy-now .cart-button:hover,
+        .buy-now .send-cart-button:hover {
+            background: #f05e8a;
+            color: var(--white);
+            border-color: #f05e8a;
+        }
+        #cart-summary {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid var(--primary-color);
+            border-radius: 10px;
+            background: var(--white);
+        }
+        #cart-summary h4 {
+            margin: 0 0 10px;
+            font-size: 1.2rem;
+            color: var(--light-black);
+        }
+        #cart-summary ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #cart-summary li {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+        #cart-summary li:last-child {
+            border-bottom: none;
+        }
+        #cart-summary .empty-cart {
+            color: #777;
+            font-style: italic;
+        }
+        @media (max-width: 768px) {
+            .buy-now .home-button,
+            .buy-now .cart-button,
+            .buy-now .send-cart-button {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+            #cart-summary {
+                padding: 10px;
+            }
+            #cart-summary h4 {
+                font-size: 1.1rem;
+            }
+        }
+        @media (max-width: 500px) {
+            .buy-now .home-button,
+            .buy-now .cart-button,
+            .buy-now .send-cart-button {
+                font-size: 0.85rem;
+                padding: 7px 12px;
+            }
+            #cart-summary {
+                padding: 8px;
+            }
+            #cart-summary h4 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <img src="https://i.postimg.cc/44rVTdxQ/logo.png" alt="logo" style="height: 45px;">
+            <input type="checkbox" name="" id="checkbox">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="/index.html#home">Home</a></li>
+                <li><a href="/index.html#sellers">Shop</a></li>
+                <li><a href="/index.html#news">Blog</a></li>
+                <li><a href="/index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section id="product-detail">
+        <div class="container">
+            <div class="best-p1">
+                <img id="product-image" alt="product">
+                <div class="best-p1-txt">
+                    <div class="name-of-p">
+                        <p id="product-name"></p>
+                    </div>
+                    <div class="rating" id="product-rating">
+                    </div>
+                    <div class="price" id="product-price">
+                        <div class="colors" id="product-colors">
+                        </div>
+                    </div>
+                    <div class="product-description">
+                        <p id="product-description"></p>
+                    </div>
+                    <div class="payment-instructions">
+                        <h4>Payment Options</h4>
+                        <p>Pay via Bank Transfer or Online Payment:</p>
+                        <ul>
+                            <li><strong>Bank Transfer</strong>: Account Name: Your Store | Account Number: 1234567890 | Bank: Example Bank</li>
+                            <li><strong>Online Payment</strong>: Use our secure payment gateway (link to be provided upon order confirmation).</li>
+                        </ul>
+                    </div>
+                    <div class="buy-now">
+                        <button onclick="contactWhatsApp()">Contact via WhatsApp</button>
+                        <button class="cart-button" onclick="addToCart()">Add to Cart</button>
+                        <a href="/index.html#home" class="home-button" onclick="navigateToHome()">Return to Home</a>
+                    </div>
+                    <div id="cart-summary">
+                        <h4>Cart Summary</h4>
+                        <ul id="cart-items"></ul>
+                        <button class="send-cart-button" onclick="sendCartToWhatsApp()">Send Cart to WhatsApp</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container container">
+            <div class="content_1">
+                <img src="https://i.postimg.cc/44rVTdxQ/logo.png" alt="logo" style="height: 100px;">
+                <p>The customer is at the heart of our<br>unique business model, <br>We serve our esteemed clients through 3 business units:Engineering Support Services,Technical & Industrial Services. Our services cover supply, installation, sales, repairs and maintenance services in the following areas:
+                    *HVAC Solutions
+                    *Industrial Refrigeration and Cold Room Services
+                    *Industrial Equipment & Parts 
+                    *Barn & oven
+                    *Blowers
+                    *Generator (petrol & diesel)
+                    *Electronics & solar energy 
+                    .</p>
+                <img src="https://i.postimg.cc/Nj9dgJ98/cards.png" alt="cards">
+            </div>
+            <div class="content_2">
+                <h4>SHOPPING</h4>
+                <a href="/home.html#sellers">get our product</a>
+                <a href="/home.html#sellers">solar product </a>
+                <a href="/home.html#sellers">Electronics gadget</a>
+                <a href="/home.html#sellers">Sale</a>
+            </div>
+            <div class="content_3">
+                <h4>SHOPPING</h4>
+                <a href="/index.html#contact">Contact Us</a>
+                <a href="https://payment-method-sb.netlify.app/" target="_blank">Payment Method</a>
+                <a href="https://delivery-status-sb.netlify.app/" target="_blank">Delivery</a>
+                <a href="https://codepen.io/sandeshbodake/full/Jexxrv" target="_blank">Return and Exchange</a>
+            </div>
+            <div class="content_4">
+                <h4>NEWSLETTER</h4>
+                <p>Be the first to know about new<br>arrivals, look books, sales & promos!</p>
+                <div class="f-mail">
+                    <input type="email" placeholder="Your Email">
+                    <i class='bx bx-envelope'></i>
+                </div>
+                <hr>
+            </div>
+        </div>
+        <div class="f-design">
+            <div class="f-design-txt container">
+                <p>Design and Code by kennykentola</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const products = [
+            {
+                id: 'fan',
+                name: 'Fan',
+                image: 'https://i.postimg.cc/rmTVV1xk/th-1.jpg',
+                price: '₦25000.00',
+                rating: [1, 1, 1, 0, 0],
+                colors: ['red', 'blue', 'white'],
+                description: 'A high-quality fan with multiple speed settings and durable design, perfect for home or office use.'
+            },
+            {
+                id: 'oven',
+                name: 'oven',
+                image: 'https://i.postimg.cc/43WYS2j0/download-1.jpg',
+                price: '₦170000.24',
+                rating: [1, 1, 0, 0, 0],
+                colors: ['green', 'grey', 'brown'],
+                description: 'Stylish and comfortable oven suitable for all seasons, crafted with premium materials.'
+            },
+            {
+                id: 'airblower',
+                name: 'Air blower',
+                image: 'https://i.postimg.cc/Kzjn6vxC/shopping.webp',
+                price: '₦27.24',
+                rating: [1, 1, 1, 1, 0],
+                colors: ['brown', 'green', 'blue'],
+                description: 'Elegant shirt with a modern fit, ideal for casual and semi-formal occasions.'
+            },
+            {
+                id: 'microwave',
+                name: 'microwave',
+                image: 'https://i.postimg.cc/cC7Mkg8h/images.jpg',
+                price: '₦43.67',
+                rating: [1, 1, 1, 1, 1],
+                colors: ['red', 'grey', 'blue'],
+                description: 'Durable and fashionable microwave designed for comfort and easy home use.'
+            },
+            {
+                id: 'hometheater',
+                name: 'home theater',
+                image: 'https://i.postimg.cc/J0sPT45d/download-5.jpg',
+                price: '₦10.23',
+                rating: [1, 1, 1, 1, 1],
+                colors: ['blank', 'blue', 'brown'],
+                description: 'Comfortable home theater made for high-quality and to give you best sounds.'
+            },
+            {
+                id: 'iron',
+                name: 'pressing iron',
+                image: 'https://i.postimg.cc/YSTRywjX/download-4.jpg',
+                price: '₦09.28',
+                rating: [1, 0, 0, 0, 0],
+                colors: ['brown', 'red', 'green'],
+                description: 'high quality pressing iron for your cloths.'
+            },
+            {
+                id: 'solarproduct',
+                name: 'solar product',
+                image: 'https://i.postimg.cc/d0SC5RNw/download.webp',
+                price: '₦06.24',
+                rating: [1, 1, 1, 1, 1],
+                colors: ['grey', 'blank', 'blank'],
+                description: 'Trendy solar product is in our storeget the the best here .'
+            },
+            {
+                id: 'fan',
+                name: 'pressing iron',
+                image: 'https://i.postimg.cc/6qcQTtvz/download-3.jpg',
+                price: '₦43.67',
+                rating: [1, 1, 1, 1, 1],
+                colors: ['grey', 'red', 'blue'],
+                description: 'high quality pressing iron for your cloths.'
+            },
+            {
+                id: 'fan',
+                name: 'Ceiling Fan',
+                image: 'https://i.postimg.cc/LXhDx8Hg/fans-ox-mega-62-ceiling-fan-1-0.webp',
+                price: '₦37.24',
+                rating: [1, 1, 1, 1, 1],
+                colors: ['grey', 'black', 'blue'],
+                description: 'high quality  ceiling fan to cool your home for you.'
+            },
+            {
+                id: 'frige',
+                name: 'washing machine',
+                image: 'https://i.postimg.cc/2jMWQ6pB/download-2.jpg',
+                price: '₦10.23',
+                rating: [1, 1, 1, 1, 1],
+                colors: ['blank', 'blue', 'brown'],
+                description: ' wash your clothes with good washing machine that last for ever.'
+            },
+            {
+                id: 'frige',
+                name: 'frige',
+                image: 'https://i.postimg.cc/RhVP7YQk/hs1.png',
+                price: '₦15.24',
+                rating: [1, 1, 1, 1, 1],
+                colors: ['blank', 'red', 'blue'],
+                description: 'frige to cool you food and other things .'
+            },
+            {
+                id: 'frige',
+                name: 'frige',
+                image: 'https://i.postimg.cc/zD02zJq8/na2.png',
+                price: '₦09.28',
+                rating: [1, 0, 0, 0, 0],
+                colors: ['blank', 'grey', 'brown'],
+                description: 'frige to cool you food and other things.'
+            }
+        ];
+
+        function getProductById(id) {
+            return products.find(product => product.id === id);
+        }
+
+        function displayProduct() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            const product = getProductById(productId);
+
+            if (product) {
+                document.getElementById('product-image').src = product.image;
+                document.getElementById('product-name').textContent = product.name;
+                document.getElementById('product-price').textContent = product.price;
+                document.getElementById('product-description').textContent = product.description;
+
+                const ratingContainer = document.getElementById('product-rating');
+                ratingContainer.innerHTML = '';
+                product.rating.forEach(star => {
+                    const i = document.createElement('i');
+                    i.className = star ? 'bx bxs-star' : 'bx bx-star';
+                    ratingContainer.appendChild(i);
+                });
+
+                const colorsContainer = document.getElementById('product-colors');
+                colorsContainer.innerHTML = '';
+                product.colors.forEach(color => {
+                    const i = document.createElement('i');
+                    i.className = `bx bxs-circle ${color}`;
+                    colorsContainer.appendChild(i);
+                });
+
+                updateCartSummary();
+            } else {
+                document.getElementById('product-name').textContent = 'Product Not Found';
+            }
+        }
+
+        function contactWhatsApp() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            const product = getProductById(productId);
+            if (product) {
+                const message = `Hello, I'm interested in purchasing the ${product.name} priced at ${product.price}. Please provide further details.`;
+                const whatsappUrl = `https://wa.me/+2348142259939?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+
+                let orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
+                orderHistory.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    timestamp: new Date().toISOString()
+                });
+                localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
+
+                const ownerMessage = `New order inquiry: ${product.name} at ${product.price}`;
+                const ownerWhatsappUrl = `https://wa.me/+2348142259939?text=${encodeURIComponent(ownerMessage)}`;
+                window.open(ownerWhatsappUrl, '_blank');
+            }
+        }
+
+        function addToCart() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            const product = getProductById(productId);
+            if (product) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const existingItem = cart.find(item => item.id === product.id);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        image: product.image,
+                        quantity: 1,
+                        timestamp: new Date().toISOString()
+                    });
+                }
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert(`${product.name} added to cart!`);
+                updateCartSummary();
+
+                const ownerMessage = `Item added to cart: ${product.name} at ${product.price} (Qty: ${existingItem ? existingItem.quantity : 1})`;
+                const ownerWhatsappUrl = `https://wa.me/+2348142259939?text=${encodeURIComponent(ownerMessage)}`;
+                window.open(ownerWhatsappUrl, '_blank');
+            }
+        }
+
+        function updateCartSummary() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+            if (cart.length === 0) {
+                const li = document.createElement('li');
+                li.className = 'empty-cart';
+                li.textContent = 'Your cart is empty';
+                cartItems.appendChild(li);
+            } else {
+                cart.forEach(item => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<span>${item.name} (Qty: ${item.quantity})</span><span>${item.price}</span>`;
+                    cartItems.appendChild(li);
+                });
+            }
+        }
+
+        function sendCartToWhatsApp() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            const cartMessage = cart.map(item => `${item.name} (Qty: ${item.quantity}) - ${item.price}`).join('\n');
+            const message = `Cart Contents:\n${cartMessage}\nPlease confirm order details.`;
+            const whatsappUrl = `https://wa.me/+2348142259939?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function navigateToHome() {
+            try {
+                window.location.assign('/index.html#home');
+            } catch (e) {
+                console.error('Navigation failed:', e);
+            }
+        }
+
+        window.onload = displayProduct;
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

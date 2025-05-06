@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Methods | Your Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        #delivery-methods {
+            padding: 50px 0;
+        }
+        #delivery-methods h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--light-black);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .delivery-content h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        .delivery-content p {
+            font-size: 1rem;
+            color: var(--light-black);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .delivery-method {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .delivery-method:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .delivery-method h4 {
+            font-size: 1.4rem;
+            color: var(--black);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .delivery-method p, .delivery-method ul li {
+            font-size: 0.95rem;
+            color: var(--light-black);
+        }
+        .delivery-method ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        .delivery-method ul li {
+            margin-bottom: 8px;
+        }
+        .delivery-method a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .delivery-method a:hover {
+            color: #f05e8a;
+        }
+        .delivery-notes ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        .delivery-notes ul li {
+            font-size: 0.95rem;
+            color: var(--light-black);
+            margin-bottom: 8px;
+        }
+        @media (max-width: 768px) {
+            #delivery-methods h2 {
+                font-size: 2rem;
+            }
+            .delivery-content h3 {
+                font-size: 1.5rem;
+            }
+            .delivery-method {
+                padding: 15px;
+            }
+            .delivery-method h4 {
+                font-size: 1.2rem;
+            }
+        }
+        @media (max-width: 500px) {
+            #delivery-methods {
+                padding: 30px 0;
+            }
+            #delivery-methods h2 {
+                font-size: 1.8rem;
+            }
+            .delivery-content h3 {
+                font-size: 1.3rem;
+            }
+            .delivery-method p, .delivery-method ul li {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <img src="https://i.postimg.cc/44rVTdxQ/logo.png" alt="logo" style="height: 45px;">
+            <input type="checkbox" name="" id="checkbox">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#sellers">Shop</a></li>
+                <li><a href="index.html#news">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Delivery Methods Section -->
+    <section id="delivery-methods" class="container">
+        <h2>Delivery Methods</h2>
+        <div class="delivery-content">
+            <h3>How We Deliver Your Order</h3>
+            <p>We partner with reliable courier services to ensure your order reaches you safely and on time. Delivery timelines depend on your location, starting from the date of order pickup (confirmation).</p>
+            
+            <div class="delivery-method">
+                <h4>Delivery Timelines</h4>
+                <ul>
+                    <li><strong>Ibadan, Oyo State:</strong> 3 business days from pickup.</li>
+                    <li><strong>Oyo State (outside Ibadan):</strong> 5 business days from pickup.</li>
+                    <li><strong>Far Locations (outside Oyo State, e.g., Lagos, Abuja):</strong> 15 business days from pickup.</li>
+                </ul>
+            </div>
+            
+            <div class="delivery-method">
+                <h4>Delivery Process</h4>
+                <p>Once your order is confirmed and payment is verified, we dispatch it within 24 hours. You’ll receive a tracking number via WhatsApp (<a href="https://wa.me/+2348142259939" target="_blank">+2348142259939</a>) or email. Contact us to check your delivery status.</p>
+            </div>
+            
+            <div class="delivery-method">
+                <h4>Delivery Costs</h4>
+                <p>Shipping fees are calculated at checkout based on your location and order weight. Pay on Delivery orders may incur a small handling fee. Contact us for a quote if your location is outside Nigeria.</p>
+            </div>
+            
+            <div class="delivery-method">
+                <h4>International Orders</h4>
+                <p>For orders outside Nigeria, delivery may take longer, and customers are responsible for customs duties and taxes. We’ll provide documentation to assist with clearance.</p>
+            </div>
+            
+            <div class="delivery-notes">
+                <h4>Important Notes</h4>
+                <ul>
+                    <li>Delivery timelines exclude weekends and public holidays.</li>
+                    <li>Ensure someone is available to receive the package at the delivery address.</li>
+                    <li>Track your order by contacting us on WhatsApp: <a href="https://wa.me/+2348142259939" target="_blank">+2348142259939</a>.</li>
+                    <li>Delays may occur due to weather, logistics issues, or customs processing for international orders.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container container">
+            <div class="content_1">
+                <img src="https://i.postimg.cc/44rVTdxQ/logo.png" alt="logo" style="height: 25px; width: 180px;">
+                <p>Your trusted online store for quality products.</p>
+            </div>
+            <div class="content_2">
+                <h4>Quick Links</h4>
+                <a href="index.html#home">Home</a>
+                <a href="index.html#sellers">Shop</a>
+                <a href="index.html#news">Blog</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="content_3">
+                <h4>Policy</h4>
+                <a href="payment-methods.html">Payment Methods</a>
+                <a href="delivery-methods.html">Delivery</a>
+                <a href="return-exchange.html">Return & Exchange</a>
+            </div>
+            <div class="content_4">
+                <h4>Contact</h4>
+                <p>Phone: <a href="tel:+2348142259939">+2348142259939</a></p>
+                <p>Email: <a href="mailto:support@yourstore.com">support@yourstore.com</a></p>
+            </div>
+        </div>
+        <div class="f-design">
+            <div class="f-design-txt">
+                <p>© 2025 Your Store. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

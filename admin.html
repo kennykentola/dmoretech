@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,400i,700">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <img src="https://i.postimg.cc/44rVTdxQ/logo.png" alt="logo" style="height: 45px;">
+            <input type="checkbox" name="" id="checkbox">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="/index.html">Login</a></li>
+                <li><a href="/home.html#sellers">Shop</a></li>
+                <li><a href="/home.html#contact">Contact</a></li>
+                <li><a href="/admin.html">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section id="admin">
+        <div class="admin-container container">
+            <div class="login-form" id="login-form">
+                <h2>Admin Login</h2>
+                <input type="email" id="admin-email" placeholder="Email" required>
+                <input type="password" id="admin-password" placeholder="Password" required>
+                <div class="error" id="login-error"></div>
+                <button onclick="adminLogin()">Login</button>
+            </div>
+            <div class="dashboard" id="dashboard" style="display: none;">
+                <h2>Admin Dashboard</h2>
+                <button onclick="adminLogout()">Logout</button>
+                <h3>Products Picked</h3>
+                <div class="table-wrapper">
+                    <table id="products-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th class="hide-mobile">Timestamp</th>
+                                <th>Customer Email</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <h3>Customers</h3>
+                <div class="table-wrapper">
+                    <table id="customers-table">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th class="hide-mobile">Address</th>
+                                <th>Products</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container container">
+            <div class="content_1">
+                <img src="https://i.postimg.cc/44rVTdxQ/logo.png" alt="logo" style="height: 100px;">
+                <p>The customer is at the heart of our<br>unique business model, which includes<br>design.</p>
+                <img src="https://i.postimg.cc/Nj9dgJ98/cards.png" alt="cards">
+            </div>
+            <div class="content_2">
+                <h4>SHOPPING</h4>
+                <a href="/home.html#sellers">Clothing Store</a>
+                <a href="/home.html#sellers">Trending Shoes</a>
+                <a href="/home.html#sellers">Accessories</a>
+                <a href="/home.html#sellers">Sale</a>
+            </div>
+            <div class="content_3">
+                <h4>SHOPPING</h4>
+                <a href="/home.html#contact">Contact Us</a>
+                <a href="/payment-methods.html">Payment Methods</a>
+                <a href="/delivery-methods.html">Delivery</a>
+                <a href="/return-exchange.html">Return & Exchange</a>
+            </div>
+            <div class="content_4">
+                <h4>NEWSLETTER</h4>
+                <p>Be the first to know about new<br>arrivals, look books, sales & promos!</p>
+                <div class="f-mail">
+                    <input type="email" placeholder="Your Email">
+                    <i class='bx bx-envelope'></i>
+                </div>
+                <hr>
+            </div>
+        </div>
+        <div class="f-design">
+            <div class="f-design-txt container">
+                <p>Design and Code by kennykentola</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+    <script src="script.js"></script>
+    <script src="admin-script.js"></script>
+</body>
+</html>
