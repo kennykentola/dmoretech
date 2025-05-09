@@ -2128,7 +2128,7 @@ $(document).ready(function() {
         localStorage.setItem('contactMessages', JSON.stringify(contactMessages));
 
         $.ajax({
-            url: 'https://formspree.io/f/xzbowpjq',
+            url: 'https://formspree.io/f/mkgrzoko',
             method: 'POST',
             data: formData,
             dataType: 'json',
