@@ -1097,7 +1097,6 @@
 
 
 
-
 const ADMIN_CREDENTIALS = { email: 'dmoretech44@gmail.com', password: 'dmoretech44' };
 
 const products = [
@@ -1773,12 +1772,13 @@ window.addToCart = function() {
         const currentCustomer = JSON.parse(localStorage.getItem('currentCustomer'));
 
         // Prompt for customer details if not logged in
-        let email = currentCustomer?.email || prompt('Please enter your email:');
-        let phone = currentCustomer?.phone || prompt('Please enter your phone number:');
-        let address = currentCustomer?.address || prompt('Please enter your address:');
+        let email = currentCustomer?.email || prompt('Please enter your email (or leave blank if providing phone):');
+        let phone = currentCustomer?.phone || prompt('Please enter your phone number (or leave blank if providing email):');
+        let address = currentCustomer?.address || prompt('Please enter your address (optional):');
 
-        if (!email || !phone) {
-            alert('Email and phone are required to add to cart.');
+        // Validate that at least one of email or phone is provided
+        if (!email && !phone) {
+            alert('Please provide either an email or a phone number to add to cart.');
             return;
         }
 
@@ -1787,14 +1787,14 @@ window.addToCart = function() {
             name: product.name,
             price: product.price,
             image: product.image,
-            email: email,
-            phone: phone,
+            email: email || 'Not provided',
+            phone: phone || 'Not provided',
             address: address || 'Not provided',
             quantity: 1,
             timestamp: new Date().toISOString()
         };
 
-        const existingItem = cart.find(item => item.id === product.id && item.email === email);
+        const existingItem = cart.find(item => item.id === product.id && (item.email === email || item.phone === phone));
         if (existingItem) {
             existingItem.quantity += 1;
         } else {
@@ -1805,7 +1805,7 @@ window.addToCart = function() {
         alert(`${product.name} added to cart!`);
         updateCartSummary();
 
-        const ownerMessage = `Item added to cart: ${product.name} at ${product.price} (Qty: ${existingItem ? existingItem.quantity : 1}) by ${email}`;
+        const ownerMessage = `Item added to cart: ${product.name} at ${product.price} (Qty: ${existingItem ? existingItem.quantity : 1}) by ${email || phone}`;
         const ownerWhatsappUrl = `https://wa.me/+2348142259939?text=${encodeURIComponent(ownerMessage)}`;
         window.open(ownerWhatsappUrl, '_blank');
     }
@@ -2060,19 +2060,10 @@ $(document).ready(function() {
             const product = allProducts.find(p => p.id === productId);
             if (product) {
                 $(this).prepend(product.price);
-                const editButton = $(this).parent().find('.edit-price-btn');
-                if (editButton.length) {
-                    editButton.attr('onclick', `openEditPriceModal('${productId}', '${product.price.replace('₦', '')}')`);
-                }
             } else {
                 console.warn(`Product not found for ID: ${productId}`);
             }
         });
-
-        // Show edit price buttons for admin
-        if (localStorage.getItem('adminLoggedIn') === 'true') {
-            $('.edit-price').css('display', 'block');
-        }
 
         // Populate new arrivals
         const newArrivalsContainer = $('#new-arrivals');
@@ -2101,9 +2092,6 @@ $(document).ready(function() {
                             </div>
                             <div class="add-cart">
                                 <button><a href="product-detail.html?id=${product.id}">Add To Cart</a></button>
-                            </div>
-                            <div class="edit-price" style="display: ${localStorage.getItem('adminLoggedIn') === 'true' ? 'block' : 'none'};">
-                                <button class="edit-price-btn" onclick="openEditPriceModal('${product.id}', '${product.price.replace('₦', '')}')">Edit Price</button>
                             </div>
                         </div>
                     </div>
