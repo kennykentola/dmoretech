@@ -7,7 +7,67 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,400i,700">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .modal-content input {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .modal-content button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .modal-content .save-btn {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .modal-content .save-btn:hover {
+            background-color: #218838;
+        }
+        .modal-content .cancel-btn {
+            background-color: #dc3545;
+            color: #fff;
+        }
+        .modal-content .cancel-btn:hover {
+            background-color: #c82333;
+        }
+        .edit-price-btn {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+        .edit-price-btn:hover {
+            background: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -22,41 +82,40 @@
             <ul class="menu-items">
                 <li><a href="/index.html">Login</a></li>
                 <li><a href="/home.html#sellers">Shop</a></li>
-                <li><a href="home-blog-section.html#blog">Blog</a></li>
+                <li><a href="/home-blog-section.html#blog">Blog</a></li>
                 <li><a href="/home.html#contact">Contact</a></li>
                 <li><a href="/admin.html">Admin</a></li>
-                <li> <a href="/payment-methods.html">Payment Methods</a></li>
-                <li> <a href="/delivery-methods.html">Delivery</a></li>
+                <li><a href="/payment-methods.html">Payment Methods</a></li>
+                <li><a href="/delivery-methods.html">Delivery</a></li>
                 <li><a href="/return-exchange.html">Return & Exchange</a></li>
+                <li><button id="logout-button" style="display: none;" onclick="customerLogout()">Logout</button></li>
             </ul>
         </div>
     </nav>
     <section id="home">
         <div class="home_page">
-          <div class="home_img">
-            <img src="https://i.postimg.cc/hGMkBdVQ/Screenshot-2025-05-06-160548.png" alt="img">
-            <div class="overlay"></div>
-          </div>
-          <div class="home_txt">
-            <h2 class="name-ti">WELCOME TO<br>D'MORETECH ENGINEERING & TRADING COMPANY</h2>
-            <div class="home_label">
-              <p>Your one-stop shop for all things amazing!<br>with an unwavering commitment to exceptional quality.</p>
+            <div class="home_img">
+                <img src="https://i.postimg.cc/hGMkBdVQ/Screenshot-2025-05-06-160548.png" alt="img">
+                <div class="overlay"></div>
             </div>
-            <button><a href="#sellers">SHOP NOW</a><i class='bx bx-right-arrow-alt'></i></button>
-            <div class="home_social_icons">
-              <a href="#"><i class='bx bxl-facebook'></i></a>
-              <a href="#"><i class='bx bxl-twitter'></i></a>
-              <a href="#"><i class='bx bxl-instagram'></i></a>
+            <div class="home_txt">
+                <h2 class="name-ti">WELCOME TO<br>D'MORE TECH ENGINEERING & TRADING COMPANY</h2>
+                <div class="home_label">
+                    <p>Your one-stop shop for all things amazing!<br>with an unwavering commitment to exceptional quality.</p>
+                </div>
+                <button><a href="#sellers">SHOP NOW</a><i class='bx bx-right-arrow-alt'></i></button>
+                <div class="home_social_icons">
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                    <a href="#"><i class='bx bxl-instagram'></i></a>
+                </div>
             </div>
-          </div>
         </div>
-      </section>
-      
+    </section>
     <section id="blog">
         <div class="container">
             <h2>New Product Arrivals</h2>
             <div class="blog-container" id="blog-posts">
-                <!-- ditinak700@mcatag.com -->
                 <!-- Blog posts will be dynamically populated -->
             </div>
         </div>
@@ -103,8 +162,8 @@
                             <i class='bx bx-star'></i>
                             <i class='bx bx-star'></i>
                         </div>
-                        <div class="price">
-                            ₦25000.00
+                        <div class="price" data-product-id="fan">
+                            <!-- Price will be dynamically populated -->
                             <div class="colors">
                                 <i class='bx bxs-circle red'></i>
                                 <i class='bx bxs-circle blue'></i>
@@ -116,6 +175,9 @@
                         </div>
                         <div class="add-cart">
                             <button><a href="/product-detail.html?id=fan">Add To Cart</a></button>
+                        </div>
+                        <div class="edit-price" style="display: none;">
+                            <button class="edit-price-btn" onclick="openEditPriceModal('fan', '')">Edit Price</button>
                         </div>
                     </div>
                 </div>
@@ -132,8 +194,8 @@
                             <i class='bx bx-star'></i>
                             <i class='bx bx-star'></i>
                         </div>
-                        <div class="price">
-                            ₦17.24
+                        <div class="price" data-product-id="oven">
+                            <!-- Price will be dynamically populated -->
                             <div class="colors">
                                 <i class='bx bxs-circle green'></i>
                                 <i class='bx bxs-circle grey'></i>
@@ -145,6 +207,9 @@
                         </div>
                         <div class="add-cart">
                             <button><a href="/product-detail.html?id=oven">Add To Cart</a></button>
+                        </div>
+                        <div class="edit-price" style="display: none;">
+                            <button class="edit-price-btn" onclick="openEditPriceModal('oven', '')">Edit Price</button>
                         </div>
                     </div>
                 </div>
@@ -161,8 +226,8 @@
                             <i class='bx bxs-star'></i>
                             <i class='bx bx-star'></i>
                         </div>
-                        <div class="price">
-                            ₦27.24
+                        <div class="price" data-product-id="airblower">
+                            <!-- Price will be dynamically populated -->
                             <div class="colors">
                                 <i class='bx bxs-circle brown'></i>
                                 <i class='bx bxs-circle green'></i>
@@ -174,6 +239,9 @@
                         </div>
                         <div class="add-cart">
                             <button><a href="/product-detail.html?id=airblower">Add To Cart</a></button>
+                        </div>
+                        <div class="edit-price" style="display: none;">
+                            <button class="edit-price-btn" onclick="openEditPriceModal('airblower', '')">Edit Price</button>
                         </div>
                     </div>
                 </div>
@@ -190,8 +258,8 @@
                             <i class='bx bxs-star'></i>
                             <i class='bx bxs-star'></i>
                         </div>
-                        <div class="price">
-                            ₦43.67
+                        <div class="price" data-product-id="microwave">
+                            <!-- Price will be dynamically populated -->
                             <div class="colors">
                                 <i class='bx bxs-circle red'></i>
                                 <i class='bx bxs-circle grey'></i>
@@ -204,136 +272,24 @@
                         <div class="add-cart">
                             <button><a href="/product-detail.html?id=microwave">Add To Cart</a></button>
                         </div>
+                        <div class="edit-price" style="display: none;">
+                            <button class="edit-price-btn" onclick="openEditPriceModal('microwave', '')">Edit Price</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="seller container">
             <h2>New Arrivals</h2>
-            <div class="best-seller">
-                <div class="best-p1">
-                    <img src="https://i.postimg.cc/J0sPT45d/download-5.jpg" alt="home theater">
-                    <div class="best-p1-txt">
-                        <div class="name-of-p">
-                            <p>Home theater</p>
-                        </div>
-                        <div class="rating">
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                        </div>
-                        <div class="price">
-                            ₦10.23
-                            <div class="colors">
-                                <i class='bx bxs-circle blank'></i>
-                                <i class='bx bxs-circle blue'></i>
-                                <i class='bx bxs-circle brown'></i>
-                            </div>
-                        </div>
-                        <div class="buy-now">
-                            <button><a href="/product-detail.html?id=hometheater">Buy Now</a></button>
-                        </div>
-                        <div class="add-cart">
-                            <button><a href="/product-detail.html?id=hometheater">Add To Cart</a></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="best-p1">
-                    <img src="https://i.postimg.cc/YSTRywjX/download-4.jpg" alt="pressing Irons">
-                    <div class="best-p1-txt">
-                        <div class="name-of-p">
-                            <p>pressing Irons</p>
-                        </div>
-                        <div class="rating">
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bx-star'></i>
-                            <i class='bx bx-star'></i>
-                            <i class='bx bx-star'></i>
-                            <i class='bx bx-star'></i>
-                        </div>
-                        <div class="price">
-                            ₦09.28
-                            <div class="colors">
-                                <i class='bx bxs-circle brown'></i>
-                                <i class='bx bxs-circle red'></i>
-                                <i class='bx bxs-circle green'></i>
-                            </div>
-                        </div>
-                        <div class="buy-now">
-                            <button><a href="/product-detail.html?id=iron">Buy Now</a></button>
-                        </div>
-                        <div class="add-cart">
-                            <button><a href="/product-detail.html?id=iron">Add To Cart</a></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="best-p1">
-                    <img src="https://i.postimg.cc/d0SC5RNw/download.webp" alt="solar">
-                    <div class="best-p1-txt">
-                        <div class="name-of-p">
-                            <p>solar product</p>
-                        </div>
-                        <div class="rating">
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                        </div>
-                        <div class="price">
-                            ₦:depending on the product
-                            <div class="colors">
-                                <i class='bx bxs-circle grey'></i>
-                                <i class='bx bxs-circle blank'></i>
-                                <i class='bx bxs-circle blank'></i>
-                            </div>
-                        </div>
-                        <div class="buy-now">
-                            <button><a href="/product-detail.html?id=solarproduct">Buy Now</a></button>
-                        </div>
-                        <div class="add-cart">
-                            <button><a href="/product-detail.html?id=solarproduct">Add To Cart</a></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="best-p1">
-                    <img src="https://i.postimg.cc/6qcQTtvz/download-3.jpg" alt="pressing Irons2">
-                    <div class="best-p1-txt">
-                        <div class="name-of-p">
-                            <p>presssing irons</p>
-                        </div>
-                        <div class="rating">
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                        </div>
-                        <div class="price">
-                            ₦14000.67
-                            <div class="colors">
-                                <i class='bx bxs-circle grey'></i>
-                                <i class='bx bxs-circle red'></i>
-                                <i class='bx bxs-circle blue'></i>
-                            </div>
-                        </div>
-                        <div class="buy-now">
-                            <button><a href="/product-detail.html?id=iron">Buy Now</a></button>
-                        </div>
-                        <div class="add-cart">
-                            <button><a href="/product-detail.html?id=iron">Add To Cart</a></button>
-                        </div>
-                    </div>
-                </div>
+            <div class="best-seller" id="new-arrivals">
+                <!-- New arrivals will be dynamically populated -->
             </div>
         </div>
         <div class="seller container">
             <h2>Hot Sales</h2>
             <div class="best-seller">
                 <div class="best-p1">
-                    <img src="https://i.postimg.cc/LXhDx8Hg/fans-ox-mega-62-ceiling-fan-1-0.webp" alt="img">
+                    <img src="https://i.postimg.cc/LXhDx8Hg/fans-ox-mega-62-ceiling-fan-1-0.webp" alt="ceiling fan">
                     <div class="best-p1-txt">
                         <div class="name-of-p">
                             <p>ceiling fan</p>
@@ -345,8 +301,8 @@
                             <i class='bx bxs-star'></i>
                             <i class='bx bxs-star'></i>
                         </div>
-                        <div class="price">
-                            ₦25000.24
+                        <div class="price" data-product-id="ceilingfan">
+                            <!-- Price will be dynamically populated -->
                             <div class="colors">
                                 <i class='bx bxs-circle grey'></i>
                                 <i class='bx bxs-circle black'></i>
@@ -354,10 +310,13 @@
                             </div>
                         </div>
                         <div class="buy-now">
-                            <button><a href="/product-detail.html?id=shoes3">Buy Now</a></button>
+                            <button><a href="/product-detail.html?id=ceilingfan">Buy Now</a></button>
                         </div>
                         <div class="add-cart">
-                            <button><a href="/product-detail.html?id=shoes3">Add To Cart</a></button>
+                            <button><a href="/product-detail.html?id=ceilingfan">Add To Cart</a></button>
+                        </div>
+                        <div class="edit-price" style="display: none;">
+                            <button class="edit-price-btn" onclick="openEditPriceModal('ceilingfan', '')">Edit Price</button>
                         </div>
                     </div>
                 </div>
@@ -374,8 +333,8 @@
                             <i class='bx bxs-star'></i>
                             <i class='bx bxs-star'></i>
                         </div>
-                        <div class="price">
-                            ₦100000.23
+                        <div class="price" data-product-id="washingmachine">
+                            <!-- Price will be dynamically populated -->
                             <div class="colors">
                                 <i class='bx bxs-circle blank'></i>
                                 <i class='bx bxs-circle blue'></i>
@@ -383,18 +342,21 @@
                             </div>
                         </div>
                         <div class="buy-now">
-                            <button><a href="/product-detail.html?id=tshirt2">Buy Now</a></button>
+                            <button><a href="/product-detail.html?id=washingmachine">Buy Now</a></button>
                         </div>
                         <div class="add-cart">
-                            <button><a href="/product-detail.html?id=tshirt2">Add To Cart</a></button>
+                            <button><a href="/product-detail.html?id=washingmachine">Add To Cart</a></button>
+                        </div>
+                        <div class="edit-price" style="display: none;">
+                            <button class="edit-price-btn" onclick="openEditPriceModal('washingmachine', '')">Edit Price</button>
                         </div>
                     </div>
                 </div>
                 <div class="best-p1">
-                    <img src="https://i.postimg.cc/v8qLJPhC/download-2.webp" alt="frige1">
+                    <img src="https://i.postimg.cc/RhVP7YQk/hs1.png" alt="fridge1">
                     <div class="best-p1-txt">
                         <div class="name-of-p">
-                            <p>frige</p>
+                            <p>fridge</p>
                         </div>
                         <div class="rating">
                             <i class='bx bxs-star'></i>
@@ -403,8 +365,8 @@
                             <i class='bx bxs-star'></i>
                             <i class='bx bxs-star'></i>
                         </div>
-                        <div class="price">
-                            ₦1500.00
+                        <div class="price" data-product-id="fridge1">
+                            <!-- Price will be dynamically populated -->
                             <div class="colors">
                                 <i class='bx bxs-circle blank'></i>
                                 <i class='bx bxs-circle red'></i>
@@ -412,18 +374,21 @@
                             </div>
                         </div>
                         <div class="buy-now">
-                            <button><a href="/product-detail.html?id=tshirt3">Buy Now</a></button>
+                            <button><a href="/product-detail.html?id=fridge1">Buy Now</a></button>
                         </div>
                         <div class="add-cart">
-                            <button><a href="/product-detail.html?id=tshirt3">Add To Cart</a></button>
+                            <button><a href="/product-detail.html?id=fridge1">Add To Cart</a></button>
+                        </div>
+                        <div class="edit-price" style="display: none;">
+                            <button class="edit-price-btn" onclick="openEditPriceModal('fridge1', '')">Edit Price</button>
                         </div>
                     </div>
                 </div>
                 <div class="best-p1">
-                    <img src="https://i.postimg.cc/9F7ywcPY/download-1.webp" alt="frige">
+                    <img src="https://i.postimg.cc/zD02zJq8/na2.png" alt="fridge2">
                     <div class="best-p1-txt">
                         <div class="name-of-p">
-                            <p>frige</p>
+                            <p>fridge</p>
                         </div>
                         <div class="rating">
                             <i class='bx bxs-star'></i>
@@ -432,8 +397,8 @@
                             <i class='bx bx-star'></i>
                             <i class='bx bx-star'></i>
                         </div>
-                        <div class="price">
-                            ₦10900.28
+                        <div class="price" data-product-id="fridge2">
+                            <!-- Price will be dynamically populated -->
                             <div class="colors">
                                 <i class='bx bxs-circle blank'></i>
                                 <i class='bx bxs-circle grey'></i>
@@ -441,21 +406,16 @@
                             </div>
                         </div>
                         <div class="buy-now">
-                            <button><a href="/product-detail.html?id=bag2">Buy Now</a></button>
+                            <button><a href="/product-detail.html?id=fridge2">Buy Now</a></button>
                         </div>
                         <div class="add-cart">
-                            <button><a href="/product-detail.html?id=bag2">Add To Cart</a></button>
+                            <button><a href="/product-detail.html?id=fridge2">Add To Cart</a></button>
+                        </div>
+                        <div class="edit-price" style="display: none;">
+                            <button class="edit-price-btn" onclick="openEditPriceModal('fridge2', '')">Edit Price</button>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <section id="blog">
-        <div class="container">
-            <h2>New Product Arrivals</h2>
-            <div class="blog-container" id="blog-posts">
-                <!-- Blog posts will be dynamically populated -->
             </div>
         </div>
     </section>
@@ -464,31 +424,38 @@
             <div class="contact">
                 <div class="container">
                     <h2>Contact Us</h2>
-                    <!-- <p class="address">7 Old Oyo Rd, Alaka 200132, Oyo, Nigeria</p> -->
-                    <p class="address">ìyànà Barack, Ojoo Ibadan</p>
+                    <p class="address">
+                        <strong>📍 Store Location:</strong><br>
+                        Ìyànà Barack, Ojoo<br>
+                        7 Old Oyo Rd, Alaka 200132<br>
+                        Oyo, Nigeria<br>
+                        <a href="https://www.google.com/maps/search/?api=1&query=7+Old+Oyo+Rd,+Alaka+200132,+Oyo,+Nigeria" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           style="color: #0066cc; text-decoration: underline;">
+                           Get Directions on Google Maps
+                        </a>
+                    </p>
+                    <p class="hours">
+                        <strong>Hours:</strong> Mon-Sat: 9AM - 6PM | Sun: Closed
+                    </p>
+                    <!-- <p class="address">Ìyànà Barack, Ojoo Ibadan</p> -->
                     <div class="map">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.570888774373!2d3.893276314731572!3d7.413295994644672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10398d9b7c5b5b7b%3A0x5b7c9c9b9c9b9c9b!2sOjoo%2C%20Ibadan%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1698765432100!5m2!1sen!2sng"
                                 width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
-            <!-- <form action="https://formspree.io/f/xzbowpjq" method="POST" id="contact-form"> -->
-                <form action="https://formspree.io/f/mnndvabd" method="POST" id="contact-form">
+            <form action="https://formspree.io/f/mkgrzoko" method="POST" id="contact-form">
                 <div class="form">
                     <div class="form-txt">
                         <h4>INFORMATION</h4>
                         <h1>Contact Us</h1>
-                        <span>As you might expect of a company that began as a high-end interiors contractor, we pay strict attention.</span>
+                        <span>As a trusted electronics retailer, we combine cutting-edge technology with exceptional quality to bring you the best home appliances and entertainment systems. From ultra-HD smart TVs to energy-efficient refrigerators, and more, we deliver premium products designed for modern living—all backed by expert service and reliable support.</span>
                         <h3>Ibadan Nigeria</h3>
                         <p>
-                            <section class="contact">
-                                <!-- Other content -->
-                                <div class="map">
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.570888774373!2d3.893276314731572!3d7.413295994644672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10398d9b7c5b5b7b%3A0x5b7c9c9b9c9b9c9b!2sOjoo%2C%20Ibadan%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1698765432100!5m2!1sen!2sng"
-                                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                </div>
-                                <!-- Form content -->
-                            </section>ìyànà Barack, Ojoo Ibadan<br> <strong>Tell</strong>+2348142259939,<br>+2349030804218,+2347057339815</p>
+                            <strong>Tell:</strong> +2348142259939, +2349030804218, +2347057339815
+                        </p>
                     </div>
                     <div class="form-details">
                         <input type="text" name="name" id="name" placeholder="Name" required>
@@ -500,31 +467,39 @@
             </form>
         </div>
     </section>
+    <div class="modal" id="edit-price-modal">
+        <div class="modal-content">
+            <h3>Edit Product Price</h3>
+            <input type="text" id="edit-price-input" placeholder="New Price (e.g., 27.24)">
+            <div id="edit-price-error" style="color: #dc3545; margin-bottom: 10px;"></div>
+            <button class="save-btn" onclick="savePrice()">Save</button>
+            <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
     <footer>
         <div class="footer-container container">
             <div class="content_1">
                 <img src="https://i.postimg.cc/44rVTdxQ/logo.png" alt="logo" style="height: 100px;">
-                <p>The customer is at the heart of our<br>unique business model,<br>We serve our esteemed clients through 3 business units:Engineering Support Services,Technical & Industrial Services. Our services cover supply, installation, sales, repairs and maintenance services in the following areas:
-                    *HVAC Solutions
-                    *Industrial Refrigeration and Cold Room Services
-                    *Industrial Equipment & Parts 
-                    *Barn & oven
-                    *Blowers
-                    *Generator (petrol & diesel)
-                    *Electronics & solar energy 
-                    
-                    </p>
-                <img src="https://i.postimg.cc/Nj9dgJ98/cards.png" alt="cards">
+                <p>The customer is at the heart of our unique business model. We serve our esteemed clients through 3 business units: Engineering Support Services, Technical & Industrial Services. Our services cover supply, installation, sales, repairs, and maintenance in the following areas:<br>
+                    * HVAC Solutions<br>
+                    * Industrial Refrigeration and Cold Room Services<br>
+                    * Industrial Equipment & Parts<br>
+                    * Barn & Oven<br>
+                    * Blowers<br>
+                    * Generator (Petrol & Diesel)<br>
+                    * Electronics & Solar Energy
+                </p>
+                
             </div>
             <div class="content_2">
                 <h4>SHOPPING</h4>
-                <a href="/home.html#sellers">get our product</a>
-                <a href="/home.html#sellers">solar product </a>
-                <a href="/home.html#sellers">Electronics gadget</a>
-                <a href="/home.html#sellers">Sale</a>
+                <a href="home.html#sellers">get our product</a>
+                <a href="home.html#sellers">solar product </a>
+                <a href="home.html#sellers">Electronics gadget</a>
+                <a href="home.html#sellers">Sale</a>
             </div>
             <div class="content_3">
-                <h4>Contact us</h4>
+                <h4>SUPPORT</h4>
                 <a href="/home.html#contact">Contact Us</a>
                 <a href="/payment-methods.html">Payment Methods</a>
                 <a href="/delivery-methods.html">Delivery</a>
@@ -532,7 +507,7 @@
             </div>
             <div class="content_4">
                 <h4>NEWSLETTER</h4>
-                <p>Be the first to know about new<br>arrivals, look books, sales & promos!</p>
+                <p>Be the first to know about new arrivals, look books, sales & promos!</p>
                 <div class="f-mail">
                     <input type="email" placeholder="Your Email">
                     <i class='bx bx-envelope'></i>
@@ -542,7 +517,8 @@
         </div>
         <div class="f-design">
             <div class="f-design-txt container">
-                <p> <a href="https://kennykentola.vercel.app/">Design and Code by kennykentola</a></p>
+                <p>Design and Code by kennykentola</p>
+                <p>© 2025 Your dmore tech. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -550,6 +526,6 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

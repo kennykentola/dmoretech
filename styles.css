@@ -1529,3 +1529,47 @@ footer {
         padding: 10px;
     }
 }
+
+
+.login-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.delete-btn {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.delete-btn:hover {
+    background: #cc0000;
+}
+.hide-mobile {
+    display: table-cell;
+}
+@media (max-width: 768px) {
+    .hide-mobile {
+        display: none;
+    }
+}
+
+#image-preview {
+    max-width: 200px;
+    margin-top: 10px;
+    display: none;
+}
