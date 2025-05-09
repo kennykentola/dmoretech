@@ -1194,7 +1194,7 @@ const products = [
     {
         id: 'fridge1',
         name: 'fridge',
-        image: 'https://i.postimg.cc/RhVP7YQk/hs1.png',
+        image: 'https://i.postimg.cc/bYQ9C9RM/Whats-App-Image-2025-05-07-at-18-22-26-b132a784.jpg',
         price: '₦1500.24',
         rating: [1, 1, 1, 1, 1],
         colors: ['blank', 'red', 'blue'],
@@ -1203,7 +1203,7 @@ const products = [
     {
         id: 'fridge2',
         name: 'fridge',
-        image: 'https://i.postimg.cc/zD02zJq8/na2.png',
+        image: 'https://i.postimg.cc/B6f1HRRv/download-1.webp',
         price: '₦10900.28',
         rating: [1, 0, 0, 0, 0],
         colors: ['blank', 'grey', 'brown'],

@@ -1,13 +1,14 @@
- node_modules/
- dist/
- build/
- 
- # Ignore temporary files
- *.log
- *.tmp
- .DS_Store
- 
- # Ignore sensitive files
- .env
- *.key
- *.pem
+# Ignore node_modules and other build artifacts
+  node_modules/
+  dist/
+  build/
+  
+  # Ignore temporary files
+  *.log
+  *.tmp
+  .DS_Store
+  
+  # Ignore sensitive files
+  .env
+  *.key
+  *.pem
