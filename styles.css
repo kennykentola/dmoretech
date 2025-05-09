@@ -477,8 +477,8 @@ body {
     font-weight: 500;
     transition: background 0.3s ease;
     display: inline-block;
-    min-height: 44px;
-    line-height: 28px;
+    /* min-height: 44px;
+    line-height: 28px; */
 }
 
 .blog-post-content a:hover {

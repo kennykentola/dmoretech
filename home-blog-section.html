@@ -4,14 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <img src="https://i.postimg.cc/44rVTdxQ/logo.png" alt="logo" style="height: 45px;">
+            <input type="checkbox" name="" id="checkbox">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="/index.html">Login</a></li>
+                <li><a href="/home.html#sellers">Shop</a></li>
+                <li><a href="/home-blog-section.html#blog">Blog</a></li>
+                <li><a href="/home.html#contact">Contact</a></li>
+                <li><a href="/admin.html">Admin</a></li>
+                <li><a href="/payment-methods.html">Payment Methods</a></li>
+                <li><a href="/delivery-methods.html">Delivery</a></li>
+                <li><a href="/return-exchange.html">Return & Exchange</a></li>
+                <li><button id="logout-button" style="display: none;" onclick="customerLogout()">Logout</button></li>
+            </ul>
+        </div>
+    </nav>
+
     <section id="blog">
         <div class="container">
             <h2>New Product Arrivals</h2>
             <div class="blog-container" id="blog-posts">
                 <div class="fb-page" 
-                     data-href="https://www.facebook.com/profile.php?id=100069211031689" 
+                     data-href="https://www.facebook.com/dmoretech?mibextid=ZbWKwL" 
                      data-tabs="timeline" 
                      data-width="500" 
                      data-height="600" 
@@ -31,5 +57,60 @@
                 src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0">
         </script>
     </section>
+    <footer>
+        <div class="footer-container container">
+            <div class="content_1">
+                <img src="https://i.postimg.cc/44rVTdxQ/logo.png" alt="logo" style="height: 100px;" />
+                <p>
+                    The customer is at the heart of our unique business model. We serve our esteemed clients through 3
+                    business units: Engineering Support Services, Technical & Industrial Services. Our services cover
+                    supply, installation, sales, repairs, and maintenance in the following areas:<br />
+                    * HVAC Solutions<br />
+                    * Industrial Refrigeration and Cold Room Services<br />
+                    * Industrial Equipment & Parts<br />
+                    * Barn & Oven<br />
+                    * Blowers<br />
+                    * Generator (Petrol & Diesel)<br />
+                    * Electronics & Solar Energy
+                </p>
+            </div>
+            <div class="content_2">
+                <h4>SHOPPING</h4>
+                <a href="home.html#sellers">get our product</a>
+                <a href="home.html#sellers">solar product </a>
+                <a href="home.html#sellers">Electronics gadget</a>
+                <a href="home.html#sellers">Sale</a>
+            </div>
+            <div class="content_3">
+                <h4>SUPPORT</h4>
+                <a href="/home.html#contact">Contact Us</a>
+                <a href="/payment-methods.html">Payment Methods</a>
+                <a href="/delivery-methods.html">Delivery</a>
+                <a href="/return-exchange.html">Return & Exchange</a>
+            </div>
+            <div class="content_4">
+                <h4>NEWSLETTER</h4>
+                <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                <div class="f-mail">
+                    <input type="email" placeholder="dmoretech44@gmail.com" />
+                    <i class="bx bx-envelope"></i>
+                </div>
+                <hr />
+            </div>
+        </div>
+        <div class="f-design">
+            <div class="f-design-txt container">
+                <p>Design and Code by kennykentola</p>
+                <p>© 2025 Your dmore tech. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+    <!-- <script src="script.js" ></script> -->
 </body>
 </html>
+
+
