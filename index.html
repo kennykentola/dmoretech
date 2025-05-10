@@ -3,84 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Login - Shopping Website</title>
+    <title>Shop - D'More Tech</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,400i,700">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
     <style>
-        .customer-login {
-            background: var(--white);
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            max-width: 500px;
-            margin: 50px auto;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 400px;
             text-align: center;
         }
-        .customer-login h2 {
-            color: var(--light-black);
-            margin-bottom: 20px;
-        }
-        .customer-login input {
+        .modal-content input {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            pointer-events: auto; /* Ensure input is interactive */
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
-        .customer-login input:disabled {
-            background: #f0f0f0;
-            cursor: not-allowed;
-        }
-        .customer-login button {
-            background: var(--primary-color);
-            color: var(--white);
-            border: none;
+        .modal-content button {
             padding: 10px 20px;
-            border-radius: 25px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
             cursor: pointer;
-            transition: background 0.3s ease;
         }
-        .customer-login button:hover {
-            background: #e04e7a;
+        .modal-content .save-btn {
+            background-color: #28a745;
+            color: #fff;
         }
-        .error, .welcome-message {
-            margin: 10px 0;
-            color: red;
+        .modal-content .save-btn:hover {
+            background-color: #218838;
         }
-        .welcome-message {
-            color: var(--light-black);
+        .modal-content .cancel-btn {
+            background-color: #dc3545;
+            color: #fff;
         }
-        .forgot-password {
-            display: block;
-            margin: 10px 0;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-        .forgot-password:hover {
-            color: #e04e7a;
-        }
-        #password-section, #forgot-password-section {
-            display: none;
-        }
-        @media (max-width: 768px) {
-            .customer-login {
-                padding: 15px;
-                margin: 20px;
-            }
-            .customer-login input, .customer-login button {
-                font-size: 0.9rem;
-            }
-        }
-        @media (max-width: 500px) {
-            .customer-login input, .customer-login button {
-                font-size: 0.85rem;
-                padding: 8px;
-            }
+        .modal-content .cancel-btn:hover {
+            background-color: #c82333;
         }
     </style>
 </head>
@@ -97,36 +71,374 @@
             <ul class="menu-items">
                 <li><a href="/login.html">Login</a></li>
                 <li><a href="/index.html#sellers">Shop</a></li>
+                <li><a href="/index.html#blog">Blog</a></li>
                 <li><a href="/index.html#contact">Contact</a></li>
                 <li><a href="/admin.html">Admin</a></li>
+                <li><a href="/payment-methods.html">Payment Methods</a></li>
+                <li><a href="/delivery-methods.html">Delivery</a></li>
+                <li><a href="/return-exchange.html">Return & Exchange</a></li>
+                <li><button id="logout-button" style="display: none;" onclick="customerLogout()">Logout</button></li>
             </ul>
         </div>
     </nav>
-    <section id="login">
-        <div class="customer-login" id="customer-login">
-            <h2>Customer Login / Register</h2>
-            <div class="welcome-message" id="welcome-message" style="display: none;"></div>
-            <div id="register-section">
-                <input type="email" id="customer-email" placeholder="Email" required>
-                <input type="tel" id="customer-phone" placeholder="Phone Number" required>
-                <input type="password" id="customer-password" placeholder="Password" required>
-                <input type="text" id="address-input" placeholder="Enter your address" required>
-                <a href="#" class="forgot-password" id="forgot-password-link">Forgot Password?</a>
+    <section id="home">
+        <div class="home_page">
+            <div class="home_img">
+                <img src="https://i.postimg.cc/hGMkBdVQ/Screenshot-2025-05-06-160548.png" alt="img">
+                <div class="overlay"></div>
             </div>
-            <div id="forgot-password-section">
-                <input type="text" id="password-verify" placeholder="Enter 2-3 characters from previous password" required>
-                <input type="password" id="new-password" placeholder="New Password" required>
+            <div class="home_txt">
+                <h2 class="name-ti">WELCOME TO<br>D'MORE TECH ENGINEERING & TRADING COMPANY</h2>
+                <div class="home_label">
+                    <p>Your one-stop shop for all things amazing!<br>with an unwavering commitment to exceptional quality.</p>
+                </div>
+                <button><a href="#sellers">SHOP NOW</a><i class='bx bx-right-arrow-alt'></i></button>
+                <div class="home_social_icons">
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                    <a href="#"><i class='bx bxl-instagram'></i></a>
+                </div>
             </div>
-            <div id="password-section">
-                <input type="password" id="login-password" placeholder="Enter Password" required>
-            </div>
-            <div class="error" id="customer-error"></div>
-            <button onclick="checkCustomer()" id="checkCustomer">Login / Register</button>
-            <button onclick="customerLogin()" id="login-button" style="display: none;">Login</button>
-            <button onclick="resetPassword()" id="reset-password-button" style="display: none;">Reset Password</button>
-            <button onclick="customerLogout()" id="logout-button" style="display: none;">Logout</button>
         </div>
     </section>
+    <section id="blog">
+        <div class="container">
+            <h2>New Product Arrivals</h2>
+            <div class="blog-container" id="blog-posts">
+                <!-- Blog posts will be dynamically populated -->
+            </div>
+        </div>
+    </section>
+    <section id="collection">
+        <div class="collections container">
+            <div class="content">
+                <img src="https://i.postimg.cc/QC01kxhF/th.jpg" alt="generator" />
+                <div class="img-content">
+                    <p>generator</p>
+                    <button><a href="#sellers">SHOP NOW</a></button>
+                </div>
+            </div>
+            <div class="content2">
+                <img src="https://i.postimg.cc/sDLZVLXC/5987501-sd.avif" alt="tv" />
+                <div class="img-content2">
+                    <p>TV</p>
+                    <button><a href="#sellers">SHOP NOW</a></button>
+                </div>
+            </div>
+            <div class="content3">
+                <img src="https://i.postimg.cc/G3ypFp3V/download.jpg" alt="freezer" />
+                <div class="img-content3">
+                    <p>freezer</p>
+                    <button><a href="#sellers">SHOP NOW</a></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="sellers">
+        <div class="seller container">
+            <h2>Top Sales</h2>
+            <div class="best-seller">
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/rmTVV1xk/th-1.jpg" alt="fan">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>Fan</p>
+                        </div>
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bx-star'></i>
+                            <i class='bx bx-star'></i>
+                        </div>
+                        <div class="price" data-product-id="fan">
+                            <!-- Price will be dynamically populated -->
+                            <div class="colors">
+                                <i class='bx bxs-circle red'></i>
+                                <i class='bx bxs-circle blue'></i>
+                                <i class='bx bxs-circle white'></i>
+                            </div>
+                        </div>
+                        <div class="buy-now">
+                            <button><a href="/product-detail.html?id=fan">Buy Now</a></button>
+                        </div>
+                        <div class="add-cart">
+                            <button><a href="/product-detail.html?id=fan">Add To Cart</a></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/43WYS2j0/download-1.jpg" alt="oven">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>Oven</p>
+                        </div>
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bx-star'></i>
+                            <i class='bx bx-star'></i>
+                            <i class='bx bx-star'></i>
+                        </div>
+                        <div class="price" data-product-id="oven">
+                            <!-- Price will be dynamically populated -->
+                            <div class="colors">
+                                <i class='bx bxs-circle green'></i>
+                                <i class='bx bxs-circle grey'></i>
+                                <i class='bx bxs-circle brown'></i>
+                            </div>
+                        </div>
+                        <div class="buy-now">
+                            <button><a href="/product-detail.html?id=oven">Buy Now</a></button>
+                        </div>
+                        <div class="add-cart">
+                            <button><a href="/product-detail.html?id=oven">Add To Cart</a></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/Kzjn6vxC/shopping.webp" alt="air blower">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>Air Blower</p>
+                        </div>
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bx-star'></i>
+                        </div>
+                        <div class="price" data-product-id="airblower">
+                            <!-- Price will be dynamically populated -->
+                            <div class="colors">
+                                <i class='bx bxs-circle brown'></i>
+                                <i class='bx bxs-circle green'></i>
+                                <i class='bx bxs-circle blue'></i>
+                            </div>
+                        </div>
+                        <div class="buy-now">
+                            <button><a href="/product-detail.html?id=airblower">Buy Now</a></button>
+                        </div>
+                        <div class="add-cart">
+                            <button><a href="/product-detail.html?id=airblower">Add To Cart</a></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/cC7Mkg8h/images.jpg" alt="microwave">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>Microwave</p>
+                        </div>
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                        </div>
+                        <div class="price" data-product-id="microwave">
+                            <!-- Price will be dynamically populated -->
+                            <div class="colors">
+                                <i class='bx bxs-circle red'></i>
+                                <i class='bx bxs-circle grey'></i>
+                                <i class='bx bxs-circle blue'></i>
+                            </div>
+                        </div>
+                        <div class="buy-now">
+                            <button><a href="/product-detail.html?id=microwave">Buy Now</a></button>
+                        </div>
+                        <div class="add-cart">
+                            <button><a href="/product-detail.html?id=microwave">Add To Cart</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="seller container">
+            <h2>New Arrivals</h2>
+            <div class="best-seller" id="new-arrivals">
+                <!-- New arrivals will be dynamically populated -->
+            </div>
+        </div>
+        <div class="seller container">
+            <h2>Hot Sales</h2>
+            <div class="best-seller">
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/LXhDx8Hg/fans-ox-mega-62-ceiling-fan-1-0.webp" alt="ceiling fan">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>Ceiling Fan</p>
+                        </div>
+                        <div class="rating">
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                        </div>
+                        <div class="price" data-product-id="ceilingfan">
+                            <!-- Price will be dynamically populated -->
+                            <div class="colors">
+                                <i class="bx bxs-circle grey"></i>
+                                <i class="bx bxs-circle black"></i>
+                                <i class="bx bxs-circle blue"></i>
+                            </div>
+                        </div>
+                        <div class="buy-now">
+                            <button><a href="/product-detail.html?id=ceilingfan">Buy Now</a></button>
+                        </div>
+                        <div class="add-cart">
+                            <button><a href="/product-detail.html?id=ceilingfan">Add To Cart</a></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/2jMWQ6pB/download-2.jpg" alt="washing machine">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>Washing Machine</p>
+                        </div>
+                        <div class="rating">
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                        </div>
+                        <div class="price" data-product-id="washingmachine">
+                            <!-- Price will be dynamically populated -->
+                            <div class="colors">
+                                <i class="bx bxs-circle white"></i>
+                                <i class="bx bxs-circle blue"></i>
+                                <i class="bx bxs-circle brown"></i>
+                            </div>
+                        </div>
+                        <div class="buy-now">
+                            <button><a href="/product-detail.html?id=washingmachine">Buy Now</a></button>
+                        </div>
+                        <div class="add-cart">
+                            <button><a href="/product-detail.html?id=washingmachine">Add To Cart</a></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/bYQ9C9RM/Whats-App-Image-2025-05-07-at-18-22-26-b132a784.jpg" alt="fridge1">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>Fridge</p>
+                        </div>
+                        <div class="rating">
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                        </div>
+                        <div class="price" data-product-id="fridge1">
+                            <!-- Price will be dynamically populated -->
+                            <div class="colors">
+                                <i class="bx bxs-circle white"></i>
+                                <i class="bx bxs-circle red"></i>
+                                <i class="bx bxs-circle blue"></i>
+                            </div>
+                        </div>
+                        <div class="buy-now">
+                            <button><a href="/product-detail.html?id=fridge1">Buy Now</a></button>
+                        </div>
+                        <div class="add-cart">
+                            <button><a href="/product-detail.html?id=fridge1">Add To Cart</a></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/B6f1HRRv/download-1.webp" alt="fridge2">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>Fridge</p>
+                        </div>
+                        <div class="rating">
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bx-star"></i>
+                            <i class="bx bx-star"></i>
+                            <i class="bx bx-star"></i>
+                            <i class="bx bx-star"></i>
+                        </div>
+                        <div class="price" data-product-id="fridge2">
+                            <!-- Price will be dynamically populated -->
+                            <div class="colors">
+                                <i class="bx bxs-circle white"></i>
+                                <i class="bx bxs-circle grey"></i>
+                                <i class="bx bxs-circle brown"></i>
+                            </div>
+                        </div>
+                        <div class="buy-now">
+                            <button><a href="/product-detail.html?id=fridge2">Buy Now</a></button>
+                        </div>
+                        <div class="add-cart">
+                            <button><a href="/product-detail.html?id=fridge2">Add To Cart</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="form">
+                <div class="form-txt">
+                    <h4>GET IN TOUCH</h4>
+                    <h1>Contact Us</h1>
+                    <span>
+                        As a trusted electronics retailer, we combine cutting-edge technology with exceptional
+                        quality to bring you the best home appliances and entertainment systems.
+                    </span>
+                    <h3>Ibadan, Nigeria</h3>
+                    <p><strong>Phone:</strong> +2348142259939, +2349030804218, +2347057339815</p>
+                    <p><strong>Address:</strong> Ìyànà Barack, Ojoo, 7 Old Oyo Rd, Alaka 200132, Oyo, Nigeria</p>
+                    <p><strong>Hours:</strong> Mon-Sat: 9AM - 6PM | Sun: Closed</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=7+Old+Oyo+Rd,+Alaka+200132,+Oyo,+Nigeria" target="_blank" rel="noopener noreferrer">
+                        Get Directions
+                    </a>
+                </div>
+                <form method="POST" id="contact-form" class="form-details">
+                    <input type="text" name="name" id="name" placeholder="Full Name" required />
+                    <div class="error" id="name-error">Please enter a valid name</div>
+                    <input type="email" name="email" id="email" placeholder="Email Address" required />
+                    <div class="error" id="email-error">Please enter a valid email</div>
+                    <input type="tel" name="phone" id="phone" placeholder="Phone Number" />
+                    <div class="error" id="phone-error">Please enter a valid phone number</div>
+                    <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+                    <div class="error" id="message-error">Please enter a message</div>
+                    <button type="submit" id="submit-btn">
+                        Send Message
+                        <span class="spinner"></span>
+                    </button>
+                </form>
+            </div>
+            <div class="map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.570888774373!2d3.893276314731572!3d7.413295994644672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10398d9b7c5b5b7b%3A0x5b7c9c9b9c9b9c9b!2sOjoo%2C%20Ibadan%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1698765432100!5m2!1sen!2sng"
+                    width="100%"
+                    height="450"
+                    style="border: 0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+            </div>
+        </div>
+    </section>
+    <div class="modal" id="edit-price-modal">
+        <div class="modal-content">
+            <h3>Edit Product Price</h3>
+            <input type="text" id="edit-price-input" placeholder="New Price (e.g., 27.24)" />
+            <div id="edit-price-error" style="color: #dc3545; margin-bottom: 10px;"></div>
+            <button class="save-btn" onclick="savePrice()">Save</button>
+            <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
     <footer>
         <div class="footer-container container">
             <div class="content_1">
@@ -146,14 +458,14 @@
             </div>
             <div class="content_2">
                 <h4>SHOPPING</h4>
-                <a href="home.html#sellers">get our product</a>
-                <a href="home.html#sellers">solar product </a>
-                <a href="home.html#sellers">Electronics gadget</a>
-                <a href="home.html#sellers">Sale</a>
+                <a href="/index.html#sellers">Get Our Product</a>
+                <a href="/index.html#sellers">Solar Product</a>
+                <a href="/index.html#sellers">Electronics Gadget</a>
+                <a href="/index.html#sellers">Sale</a>
             </div>
             <div class="content_3">
                 <h4>SUPPORT</h4>
-                <a href="/home.html#contact">Contact Us</a>
+                <a href="/index.html#contact">Contact Us</a>
                 <a href="/payment-methods.html">Payment Methods</a>
                 <a href="/delivery-methods.html">Delivery</a>
                 <a href="/return-exchange.html">Return & Exchange</a>
@@ -171,7 +483,7 @@
         <div class="f-design">
             <div class="f-design-txt container">
                 <p>Design and Code by kennykentola</p>
-                <p>© 2025 Your dmore tech. All Rights Reserved.</p>
+                <p>© 2025 Your D'More Tech. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -179,7 +491,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
     <script src="script.js" defer></script>
 </body>
